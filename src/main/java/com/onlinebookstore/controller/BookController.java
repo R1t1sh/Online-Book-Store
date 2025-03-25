@@ -63,19 +63,29 @@ public class BookController {
             throw e;
         }
     }
+//Commented this to prevent duplicate method name conflict
+//    @GetMapping("/{id}")
+//    public ResponseEntity<Book> getBookById(@PathVariable Long id) {
+//        logger.debug("Received request to fetch book with ID: {}", id);
+//        try {
+//            Book book = bookService.getBookById(id);
+//            logger.info("Successfully fetched book with ID: {}", id);
+//            return ResponseEntity.ok(book);
+//        } catch (Exception e) {
+//            logger.error("Failed to fetch book with ID: {}", id, e);
+//            throw e;
+//        }
+//    }
 
+
+    // Simulated change for Git demonstration
     @GetMapping("/{id}")
     public ResponseEntity<Book> getBookById(@PathVariable Long id) {
-        logger.debug("Received request to fetch book with ID: {}", id);
-        try {
-            Book book = bookService.getBookById(id);
-            logger.info("Successfully fetched book with ID: {}", id);
-            return ResponseEntity.ok(book);
-        } catch (Exception e) {
-            logger.error("Failed to fetch book with ID: {}", id, e);
-            throw e;
-        }
+        logger.info("Fetching book with ID: {}", id);
+        return ResponseEntity.ok().body(bookService.getBookById(id));
     }
+
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
